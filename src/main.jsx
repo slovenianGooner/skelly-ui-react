@@ -8,6 +8,7 @@ import Alerts from "./views/Alerts.jsx";
 import Home from "./views/Home.jsx";
 import Modals from "./views/Modals.jsx";
 import Lists from "./views/Lists.jsx";
+import Inputs from "./views/Inputs.jsx";
 
 const router = createBrowserRouter([
   {
@@ -17,7 +18,7 @@ const router = createBrowserRouter([
       { path: '/alerts', element: <Alerts /> },
       { path: '/modals', element: <Modals /> },
       { path: '/lists', element: <Lists /> },
-      { path: '/basic-inputs', element: <div>Basic Inputs</div> },
+      { path: '/basic-inputs', element: <Inputs /> },
       { path: '/selects', element: <div>Selects</div> },
       { path: '/file', element: <div>File</div> },
     ]

@@ -1,4 +1,4 @@
-import {XButton, XButtonDropdown, XCard, XPageTitle} from "../lib";
+import {XButton, XButtonDropdown, XCard, XCardHeader, XPageTitle} from "../lib";
 import {ChevronDownIcon, PencilIcon} from "@heroicons/react/24/solid/index.js";
 import {Menu} from "@headlessui/react";
 
@@ -62,7 +62,7 @@ export default function Buttons() {
             <div className="px-4 sm:px-6 lg:px-8 py-10">
                 <XPageTitle>Buttons</XPageTitle>
                 <XCard className="mt-8"
-                       header={<h3 className="text-base font-semibold leading-6 text-gray-900">Primary</h3>}>
+                       header={<XCardHeader>Primary</XCardHeader>}>
                     <div className="flex items-center space-x-6">
                         <XButton as="a" href="/" style="primary" size="xs">Link</XButton>
                         <XButton as="button" onClick={buttonClicked} style="primary" size="sm">Button With
@@ -76,7 +76,7 @@ export default function Buttons() {
                     </div>
                 </XCard>
                 <XCard className="mt-8"
-                       header={<h3 className="text-base font-semibold leading-6 text-gray-900">Secondary</h3>}>
+                       header={<XCardHeader>Secondary</XCardHeader>}>
                     <div className="flex items-center space-x-6">
                         <XButton as="a" href="/" style="secondary" size="xs">Link</XButton>
                         <XButton as="button" onClick={buttonClicked} style="secondary" size="sm">Button With
@@ -90,7 +90,7 @@ export default function Buttons() {
                     </div>
                 </XCard>
                 <XCard className="mt-8"
-                       header={<h3 className="text-base font-semibold leading-6 text-gray-900">Soft</h3>}>
+                       header={<XCardHeader>Soft</XCardHeader>}>
                     <div className="flex items-center space-x-6">
                         <XButton as="a" href="/" style="soft" size="xs">Link</XButton>
                         <XButton as="button" onClick={buttonClicked} style="soft" size="sm">Button With Click</XButton>
@@ -103,7 +103,7 @@ export default function Buttons() {
                     </div>
                 </XCard>
                 <XCard className="mt-8"
-                       header={<h3 className="text-base font-semibold leading-6 text-gray-900">Danger</h3>}>
+                       header={<XCardHeader>Danger</XCardHeader>}>
                     <div className="flex items-center space-x-6">
                         <XButton as="a" href="/" style="danger" size="xs">Link</XButton>
                         <XButton as="button" onClick={buttonClicked} style="danger" size="sm">Button With
@@ -117,7 +117,7 @@ export default function Buttons() {
                     </div>
                 </XCard>
                 <XCard className="mt-8"
-                       header={<h3 className="text-base font-semibold leading-6 text-gray-900">Warning</h3>}>
+                       header={<XCardHeader>Warning</XCardHeader>}>
                     <div className="flex items-center space-x-6">
                         <XButton as="a" href="/" style="warning" size="xs">Link</XButton>
                         <XButton as="button" onClick={buttonClicked} style="warning" size="sm">Button With
@@ -131,7 +131,7 @@ export default function Buttons() {
                     </div>
                 </XCard>
                 <XCard className="mt-8"
-                       header={<h3 className="text-base font-semibold leading-6 text-gray-900">Success</h3>}>
+                       header={<XCardHeader>Success</XCardHeader>}>
                     <div className="flex items-center space-x-6">
                         <XButton as="a" href="/" style="success" size="xs">Link</XButton>
                         <XButton as="button" onClick={buttonClicked} style="success" size="sm">Button With
@@ -145,7 +145,7 @@ export default function Buttons() {
                     </div>
                 </XCard>
                 <XCard className="mt-8 mb-32" overflows={true}
-                       header={<h3 className="text-base font-semibold leading-6 text-gray-900">With Dropdown</h3>}>
+                       header={<XCardHeader>With Dropdown</XCardHeader>}>
                     <div className="flex items-center space-x-6">
                         <XButtonDropdown button={
                             <XButton divided={true}>

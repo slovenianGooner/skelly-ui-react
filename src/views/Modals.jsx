@@ -1,4 +1,4 @@
-import {XButton, XCard, XModal, XPageTitle} from "../lib/index.jsx";
+import {XButton, XCard, XCardHeader, XModal, XPageTitle} from "../lib/index.jsx";
 import {useState} from "react";
 
 export default function Modals() {
@@ -23,7 +23,7 @@ export default function Modals() {
             <div className="px-4 sm:px-6 lg:px-8 py-10">
                 <XPageTitle>Modals</XPageTitle>
                 <XCard className="mt-8"
-                       header={<h3 className="text-base font-semibold leading-6 text-gray-900">Simple</h3>}>
+                       header={<XCardHeader>Simple</XCardHeader>}>
                     <div className="space-x-2">
                         <XButton onClick={() => setModalWithFooterVisible(true)}>Modal with footer</XButton>
                         <XModal show={modalWithFooterVisible}

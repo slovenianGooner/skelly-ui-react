@@ -1,4 +1,4 @@
-import {XAlertBanner, XAlertFormError, XButton, XCard, XPageTitle, XToast} from "../lib/index.jsx";
+import {XAlertBanner, XAlertFormError, XButton, XCard, XCardHeader, XPageTitle, XToast} from "../lib/index.jsx";
 import {CheckCircleIcon, InformationCircleIcon, XMarkIcon} from "@heroicons/react/24/solid/index.js";
 import {useState} from "react";
 
@@ -17,11 +17,11 @@ export default function Alerts() {
             <div className="px-4 sm:px-6 lg:px-8 py-10">
                 <XPageTitle>Alerts</XPageTitle>
                 <XCard className="mt-8"
-                       header={<h3 className="text-base font-semibold leading-6 text-gray-900">Form Errors</h3>}>
+                       header={<XCardHeader>Form Errors</XCardHeader>}>
                     <XAlertFormError errors={errors} title="There were 2 errors with your form submission."/>
                 </XCard>
                 <XCard className="mt-8"
-                       header={<h3 className="text-base font-semibold leading-6 text-gray-900">Banners</h3>}>
+                       header={<XCardHeader>Banners</XCardHeader>}>
                     <div className="space-y-4">
                         <XAlertBanner className="bg-blue-50"
                                       action={
@@ -58,7 +58,7 @@ export default function Alerts() {
                     </div>
                 </XCard>
                 <XCard className="mt-8"
-                       header={<h3 className="text-base font-semibold leading-6 text-gray-900">Toasts</h3>}>
+                       header={<XCardHeader>Toasts</XCardHeader>}>
                     <div className="space-x-4">
                         <XButton onClick={() => setSuccessToastVisible(true)}>Show success toast</XButton>
                         <XButton onClick={() => setErrorToastVisible(true)}>Show error toast</XButton>
