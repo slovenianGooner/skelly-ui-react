@@ -94,9 +94,7 @@ export default function Inputs() {
                             <label htmlFor="output" className="text-sm">Output:</label>
                             <pre
                                 className="rounded-md bg-indigo-50 p-4 text-xs">
-                                {checkboxValues.map((value) => (
-                                    <span key={value}>{value}, </span>
-                                ))}
+                                {JSON.stringify(checkboxValues)}
                             </pre>
                         </div>
                     </div>
@@ -148,9 +146,7 @@ export default function Inputs() {
                             <label htmlFor="output" className="text-sm">Output:</label>
                             <pre
                                 className="rounded-md bg-indigo-50 p-4 text-xs">
-                                {checkboxValues.map((value) => (
-                                    <span key={value}>{value}, </span>
-                                ))}
+                                {JSON.stringify(checkboxValues)}
                             </pre>
                         </div>
                     </div>

@@ -9,6 +9,10 @@ export default function Layout({logo, navigation, headerButtons, userMenuButton,
         logo = <a href="/" className="text-2xl font-light text-white">Skelly<span className="font-bold">UI</span></a>
     }
 
+    const closeSidebar = () => {
+        setSidebarOpen(false)
+    }
+
     if (!userMenuButton) {
         userMenuButton = (
             <button className="flex items-center gap-x-2">
@@ -122,7 +126,7 @@ export default function Layout({logo, navigation, headerButtons, userMenuButton,
                                             {logo}
                                         </div>
                                         <nav className="flex flex-1 flex-col">
-                                            {navigation}
+                                            {typeof navigation === 'function' ? navigation({closeSidebar}) : navigation}
                                         </nav>
                                     </div>
                                 </Dialog.Panel>
@@ -139,7 +143,7 @@ export default function Layout({logo, navigation, headerButtons, userMenuButton,
                             {logo}
                         </div>
                         <nav className="flex flex-1 flex-col">
-                            {navigation}
+                            {typeof navigation === 'function' ? navigation({closeSidebar}) : navigation}
                         </nav>
                     </div>
                 </div>
