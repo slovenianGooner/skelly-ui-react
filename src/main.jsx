@@ -10,6 +10,7 @@ import Modals from "./views/Modals.jsx";
 import Lists from "./views/Lists.jsx";
 import Inputs from "./views/Inputs.jsx";
 import Selects from "./views/Selects.jsx";
+import File from "./views/File.jsx";
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
       { path: '/lists', element: <Lists /> },
       { path: '/basic-inputs', element: <Inputs /> },
       { path: '/selects', element: <Selects /> },
-      { path: '/file', element: <div>File</div> },
+      { path: '/file', element: <File /> },
     ]
   }
 ])
