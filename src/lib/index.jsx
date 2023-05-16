@@ -19,6 +19,8 @@ export {default as XSelectInput} from './components/SelectInput.jsx'
 export {default as XCustomSelectInput} from './components/CustomSelectInput.jsx'
 export {default as XSearchableSelectInput} from './components/SearchableSelectInput.jsx'
 export {default as XFileInput} from './components/FileInput.jsx'
+export {default as XListInput} from './components/ListInput.jsx'
+export {default as XListInputItem} from './components/ListInputItem.jsx'
 export {default as XListPagination} from './components/ListPagination.jsx'
 export {default as XSearch} from './components/Search.jsx'
 

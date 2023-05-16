@@ -16,6 +16,7 @@ function App() {
         {name: 'Basic Inputs', href: '/basic-inputs'},
         {name: 'Selects', href: '/selects'},
         {name: 'File', href: '/file'},
+        {name: 'List Inputs', href: '/list-inputs'},
     ]
 
     const navigation = (

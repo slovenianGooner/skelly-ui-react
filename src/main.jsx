@@ -11,6 +11,7 @@ import Lists from "./views/Lists.jsx";
 import Inputs from "./views/Inputs.jsx";
 import Selects from "./views/Selects.jsx";
 import File from "./views/File.jsx";
+import ListInputs from "./views/ListInputs.jsx";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
       { path: '/basic-inputs', element: <Inputs /> },
       { path: '/selects', element: <Selects /> },
       { path: '/file', element: <File /> },
+      { path: '/list-inputs', element: <ListInputs />}
     ]
   }
 ])

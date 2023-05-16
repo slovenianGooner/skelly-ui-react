@@ -61,6 +61,7 @@ export default function Buttons() {
         <>
             <div className="px-4 sm:px-6 lg:px-8 py-10">
                 <XPageTitle>Buttons</XPageTitle>
+
                 <XCard className="mt-8"
                        header={<XCardHeader>Primary</XCardHeader>}>
                     <div className="flex items-center space-x-6">
