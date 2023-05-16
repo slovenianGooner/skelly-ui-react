@@ -1,4 +1,4 @@
-export default function Card({children, header, footer, overflows = false, ...props}) {
+export default function Card({children, header, footer, overflows = false, contentClassName = 'px-4 py-5 sm:p-6', ...props}) {
     const overflowStyle = overflows ? '' : 'overflow-hidden'
 
     return (
@@ -8,7 +8,7 @@ export default function Card({children, header, footer, overflows = false, ...pr
                 {header && (
                     <div className="px-4 py-5 sm:px-6">{header}</div>
                 )}
-                <div className="px-4 py-5 sm:p-6">{children}</div>
+                <div className={contentClassName}>{children}</div>
                 {footer && (
                     <div className="px-4 py-5 sm:px-6">{footer}</div>
                 )}

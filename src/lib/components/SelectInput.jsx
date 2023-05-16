@@ -64,6 +64,7 @@ export default function SelectInput({
                 </label>
             )}
             <select
+                {...props}
                 value={value}
                 onChange={(e) => onChange(e.target.value)}
                 className={'mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 ring-1 ring-inset focus:ring-2 sm:text-sm sm:leading-6 ' + inputClass()}
