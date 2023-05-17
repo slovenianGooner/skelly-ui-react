@@ -28,15 +28,6 @@ export default function ListInputs() {
         <div className="px-4 sm:px-6 lg:px-8 py-10">
             <XPageTitle>List Inputs</XPageTitle>
 
-            <XAlertBanner className="bg-red-50 text-red-500 mt-8">
-                <div className="text-sm">
-                    Known issues:
-                    <ul className="list-disc list-inside">
-                        <li>When moving a nested input list item does not update the view, just the data.</li>
-                    </ul>
-                </div>
-            </XAlertBanner>
-
             <XListInput className="mt-8" collapsed={false} value={people} onChange={(e) => setPeople(e)}
                         emptyValue={{name: '', surname: '', phones: []}}>
                 {({ item, setItem }) => (

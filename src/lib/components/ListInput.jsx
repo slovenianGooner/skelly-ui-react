@@ -1,35 +1,38 @@
 import {nanoid} from "nanoid";
 import {XButton, XListInputItem} from "../index.jsx";
+import {useEffect, useState} from "react";
 
 export default function ListInput({value, onChange, emptyValue, children, className = '', collapsed = false, addNewButton, singleValue = false}) {
 
+    const [internalValue, setInternalValue] = useState(value.map((item) => {
+            if (singleValue) {
+                return item;
+            }
+
+            if (!item.uid) {
+                item.uid = nanoid();
+            }
+
+            // Assign any missing properties from the emptyValue
+            Object.keys(emptyValue).forEach((key) => {
+                if (!item[key]) {
+                    item[key] = emptyValue[key];
+                }
+            });
+
+            return item;
+    }));
+
+    useEffect(() => {
+        onChange(internalValue);
+    }, [internalValue]);
+
     if (addNewButton === undefined) {
-        addNewButton = (<XButton style="secondary" onClick={(e) => onChange([...value, emptyValue])}>Add New</XButton> )
+        addNewButton = (<XButton style="secondary" onClick={(e) => setInternalValue([...internalValue, emptyValue])}>Add New</XButton> )
     }
 
-    // Generate a UID for each item in the list
-    value = value.map((item) => {
-        if (singleValue) {
-            return item;
-        }
-
-        if (!item.uid) {
-            item.uid = nanoid();
-        }
-
-        // Assign any missing properties from the emptyValue
-        Object.keys(emptyValue).forEach((key) => {
-            if (!item[key]) {
-                item[key] = emptyValue[key];
-            }
-        });
-
-        return item;
-    })
-
     const setData = (index, newItem) => {
-        value[index] = newItem;
-        onChange(value);
+        setInternalValue([...internalValue.slice(0, index), newItem, ...internalValue.slice(index + 1)]);
     }
 
     const moveUp = (index) => {
@@ -37,10 +40,7 @@ export default function ListInput({value, onChange, emptyValue, children, classN
             return;
         }
 
-        const item = value[index];
-        value.splice(index, 1);
-        value.splice(index - 1, 0, item);
-        onChange(value);
+        setInternalValue([...internalValue.slice(0, index - 1), internalValue[index], internalValue[index - 1], ...internalValue.slice(index + 1)]);
     }
 
     const moveDown = (index) => {
@@ -48,29 +48,26 @@ export default function ListInput({value, onChange, emptyValue, children, classN
             return;
         }
 
-        const item = value[index];
-        value.splice(index, 1);
-        value.splice(index + 1, 0, item);
-        onChange(value);
+        setInternalValue([...internalValue.slice(0, index), internalValue[index + 1], internalValue[index], ...internalValue.slice(index + 2)]);
     }
 
     return (
         <div className={'space-y-4 ' + className}>
-            {value.length > 0 && (
+            {internalValue.length > 0 && (
                 <div className="space-y-2">
-                    {value.map((item, index) => (
-                        <XListInputItem key={singleValue ? index : (item.uid ?? index)} item={item} title={'#' + (index + 1)}
+                     {internalValue.map((item, index) => (
+                        <XListInputItem key={singleValue ? nanoid() : (item.uid ?? nanoid())} item={item} title={'#' + (index + 1)}
                                         onChange={(newItem) => setData(index, newItem)}
-                                        onRemove={() => onChange(value.filter((_, i) => i !== index))}
+                                        onRemove={() => setInternalValue([...internalValue.slice(0, index), ...internalValue.slice(index + 1)])}
                                         canMoveUp={index > 0}
                                         onMoveUp={() => moveUp(index)}
-                                        canMoveDown={index < value.length - 1}
+                                        canMoveDown={index < internalValue.length - 1}
                                         onMoveDown={() => moveDown(index)}
                                         singleValue={singleValue}
                                         collapsed={collapsed}>
                             {({ item, setItem }) => children({ item, setItem })}
                         </XListInputItem>
-                    ))}
+                     ))}
                 </div>
             )}
 
