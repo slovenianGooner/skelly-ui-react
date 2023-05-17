@@ -2,15 +2,10 @@ import {MinusIcon, PlusIcon} from "@heroicons/react/24/solid/index.js";
 import {useState} from "react";
 import {ArrowDownIcon, ArrowUpIcon, TrashIcon} from "@heroicons/react/24/outline/index.js";
 
-export default function ListInputItem({item, onChange, onRemove, canMoveUp, onMoveUp, canMoveDown, onMoveDown, singleValue, title, collapsed = false, children}) {
+export default function ListInputItem({item, onChange, onRemove, canMoveUp, onMoveUp, canMoveDown, onMoveDown, title, collapsed = false, children}) {
     const [open, setOpen] = useState(!collapsed)
 
     const setItem = (key, newValue) => {
-        if (singleValue) {
-            onChange(key);
-            return;
-        }
-
         item[key] = newValue;
         onChange(item);
     }

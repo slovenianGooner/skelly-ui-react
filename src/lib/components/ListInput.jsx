@@ -2,13 +2,9 @@ import {nanoid} from "nanoid";
 import {XButton, XListInputItem} from "../index.jsx";
 import {useEffect, useState} from "react";
 
-export default function ListInput({value, onChange, emptyValue, children, className = '', collapsed = false, addNewButton, singleValue = false}) {
+export default function ListInput({value, onChange, emptyValue, children, className = '', collapsed = false, addNewButton}) {
 
     const [internalValue, setInternalValue] = useState(value.map((item) => {
-            if (singleValue) {
-                return item;
-            }
-
             if (!item.uid) {
                 item.uid = nanoid();
             }
@@ -56,14 +52,13 @@ export default function ListInput({value, onChange, emptyValue, children, classN
             {internalValue.length > 0 && (
                 <div className="space-y-2">
                      {internalValue.map((item, index) => (
-                        <XListInputItem key={singleValue ? nanoid() : (item.uid ?? nanoid())} item={item} title={'#' + (index + 1)}
+                        <XListInputItem key={item.uid ?? nanoid()} item={item} title={'#' + (index + 1)}
                                         onChange={(newItem) => setData(index, newItem)}
                                         onRemove={() => setInternalValue([...internalValue.slice(0, index), ...internalValue.slice(index + 1)])}
                                         canMoveUp={index > 0}
                                         onMoveUp={() => moveUp(index)}
                                         canMoveDown={index < internalValue.length - 1}
                                         onMoveDown={() => moveDown(index)}
-                                        singleValue={singleValue}
                                         collapsed={collapsed}>
                             {({ item, setItem }) => children({ item, setItem })}
                         </XListInputItem>
