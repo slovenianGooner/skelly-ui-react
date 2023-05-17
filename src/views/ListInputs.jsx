@@ -28,7 +28,7 @@ export default function ListInputs() {
         <div className="px-4 sm:px-6 lg:px-8 py-10">
             <XPageTitle>List Inputs</XPageTitle>
 
-            <XListInput className="mt-8" collapsed={false} value={people} onChange={(e) => setPeople(e)}
+            <XListInput className="mt-8" collapsed={true} value={people} onChange={(e) => setPeople(e)}
                         emptyValue={{name: '', surname: '', phones: []}}>
                 {({ item, setItem }) => (
                     <div className="space-y-2">
