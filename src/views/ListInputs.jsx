@@ -34,14 +34,6 @@ export default function ListInputs() {
                     <div className="space-y-2">
                         <XTextInput label="Name" defaultValue={item.name} onChange={(e) => setItem('name', e.target.value)}/>
                         <XTextInput label="Surname" defaultValue={item.surname} onChange={(e) => setItem('surname', e.target.value)}/>
-                        <div>
-                            <label htmlFor="phones" className="block text-sm font-medium leading-6">Phones</label>
-                            <XListInput label="Phones" value={item.phones} onChange={(e) => setItem('phones', e)} singleValue={true}>
-                                {({ item, setItem }) => (
-                                    <XTextInput defaultValue={item} onChange={(e) => setItem(e.target.value)}/>
-                                )}
-                            </XListInput>
-                        </div>
                     </div>
                 )}
             </XListInput>
