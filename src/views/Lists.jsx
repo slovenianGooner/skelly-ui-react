@@ -116,16 +116,16 @@ export default function Lists() {
     return (
         <>
             <div className="px-4 sm:px-6 lg:px-8 py-10">
-                <div className="space-y-4">
+                <div className="space-y-8">
                     <XPageTitle>Lists</XPageTitle>
                     <XCard contentClassName="p-0" header={listHeader} footer={listFooter}>
-                        <ul className="divide-y divide-gray-200">
+                        <ul className="divide-y divide-gray-200 dark:divide-white/10">
                             {contactsOnPage.map((contact) => (
                                 <li key={contact.id} className="flex justify-between gap-x-6 py-5 px-6">
                                     <div className="flex gap-x-4">
                                         <div className="min-w-0 flex-auto">
-                                            <p className="text-sm font-semibold leading-6 text-gray-900">{contact.name}</p>
-                                            <p className="mt-1 truncate text-xs leading-5 text-gray-500">{contact.email}</p>
+                                            <p className="text-sm font-semibold leading-6 text-gray-900 dark:text-white">{contact.name}</p>
+                                            <p className="mt-1 truncate text-xs leading-5 text-gray-500 dark:text-gray-400">{contact.email}</p>
                                         </div>
                                     </div>
                                     <div className="hidden sm:flex sm:flex-col sm:items-end">
@@ -133,7 +133,7 @@ export default function Lists() {
                                             {contact.roles.map((role) => (
                                                 <span
                                                     key={role}
-                                                    className="inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
+                                                    className="inline-flex items-center rounded-md bg-indigo-50 dark:bg-indigo-400/10 px-2 py-1 text-xs font-medium text-indigo-700 dark:text-indigo-400 ring-1 ring-inset ring-indigo-700/10 dark:ring-indigo-400/30">
                                                 {role}
                                             </span>
                                             ))}

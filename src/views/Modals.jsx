@@ -8,9 +8,9 @@ export default function Modals() {
 
     const modalContent = (
         <>
-            <h3 className="text-base font-semibold leading-6 text-gray-900">Deactivate account</h3>
+            <h3 className="text-base font-semibold leading-6 text-gray-900 dark:text-white">Deactivate account</h3>
             <div className="mt-2">
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-gray-500 dark:text-gray-400">
                     Are you sure you want to deactivate your account? All of your data will be permanently removed
                     from our servers forever. This action cannot be undone.
                 </p>

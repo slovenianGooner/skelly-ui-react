@@ -1,10 +1,22 @@
-import {Fragment, useState} from "react";
-import {Dialog, Menu, Transition} from "@headlessui/react";
-import {Bars3Icon, ChevronDownIcon, XMarkIcon} from "@heroicons/react/24/solid/index.js";
-import {XButtonDropdown} from "../index.jsx";
+import { Fragment, useEffect, useState } from "react";
+import { Dialog, Menu, Transition } from "@headlessui/react";
+import { Bars3Icon, ChevronDownIcon, XMarkIcon, MoonIcon } from "@heroicons/react/24/solid/index.js";
+import { XButtonDropdown, XToggleInput } from "../index.jsx";
 
-export default function Layout({logo, navigation, headerButtons, userMenuButton, userMenuItems, username, children, loadingScreen}) {
+export default function Layout({ logo, navigation, headerButtons, userMenuButton, userMenuItems, username, children, loadingScreen }) {
+
     const [sidebarOpen, setSidebarOpen] = useState(false)
+    const [theme, setTheme] = useState(localStorage.getItem("theme"))
+
+    const toggleTheme = () => {
+        setTheme(theme === "dark" ? "light" : "dark")
+    }
+
+    useEffect(() => {
+        localStorage.setItem("theme", theme)
+        document.body.classList = `h-full ${theme}`
+    }, [theme])
+
     if (!logo) {
         logo = <a href="/" className="text-2xl font-light text-white">Skelly<span className="font-bold">UI</span></a>
     }
@@ -16,10 +28,10 @@ export default function Layout({logo, navigation, headerButtons, userMenuButton,
     if (!userMenuButton) {
         userMenuButton = (
             <button className="flex items-center gap-x-2">
-                    <span className="text-gray-700 text-sm font-medium truncate">
-                        {username || 'John Doe'}
-                    </span>
-                <ChevronDownIcon className="h-5 w-5 text-gray-500" aria-hidden="true"/>
+                <span className="text-gray-700 dark:text-gray-200 text-sm font-medium truncate">
+                    {username || 'John Doe'}
+                </span>
+                <ChevronDownIcon className="h-5 w-5 text-gray-500 dark:text-gray-400" aria-hidden="true" />
             </button>
         )
     }
@@ -28,45 +40,45 @@ export default function Layout({logo, navigation, headerButtons, userMenuButton,
         userMenuItems = (
             <>
                 <Menu.Item>
-                    {({active}) => (
+                    {({ active }) => (
                         <a
                             href="#"
                             className={`${active ? 'bg-gray-100 text-gray-900' : 'text-gray-700'
-                            } flex justify-between w-full px-4 py-2 text-sm leading-5 text-left`}
+                                } flex justify-between w-full px-4 py-2 text-sm leading-5 text-left`}
                         >
                             Account settings
                         </a>
                     )}
                 </Menu.Item>
                 <Menu.Item>
-                    {({active}) => (
+                    {({ active }) => (
                         <a
                             href="#"
                             className={`${active ? 'bg-gray-100 text-gray-900' : 'text-gray-700'
-                            } flex justify-between w-full px-4 py-2 text-sm leading-5 text-left`}
+                                } flex justify-between w-full px-4 py-2 text-sm leading-5 text-left`}
                         >
                             Support
                         </a>
                     )}
                 </Menu.Item>
                 <Menu.Item>
-                    {({active}) => (
+                    {({ active }) => (
                         <a
                             href="#"
                             className={`${active ? 'bg-gray-100 text-gray-900' : 'text-gray-700'
-                            } flex justify-between w-full px-4 py-2 text-sm leading-5 text-left`}
+                                } flex justify-between w-full px-4 py-2 text-sm leading-5 text-left`}
                         >
                             License
                         </a>
                     )}
                 </Menu.Item>
-                <div className="border-t border-gray-100"/>
+                <div className="border-t border-gray-100" />
                 <Menu.Item>
-                    {({active}) => (
+                    {({ active }) => (
                         <a
                             href="#"
                             className={`${active ? 'bg-gray-100 text-gray-900' : 'text-gray-700'
-                            } flex justify-between w-full px-4 py-2 text-sm leading-5 text-left`}
+                                } flex justify-between w-full px-4 py-2 text-sm leading-5 text-left`}
                         >
                             Sign out
                         </a>
@@ -90,7 +102,7 @@ export default function Layout({logo, navigation, headerButtons, userMenuButton,
                             leaveFrom="opacity-100"
                             leaveTo="opacity-0"
                         >
-                            <div className="fixed inset-0 bg-gray-900/80"/>
+                            <div className="fixed inset-0 bg-gray-900/80" />
                         </Transition.Child>
 
                         <div className="fixed inset-0 flex">
@@ -114,9 +126,9 @@ export default function Layout({logo, navigation, headerButtons, userMenuButton,
                                     >
                                         <div className="absolute left-full top-0 flex w-16 justify-center pt-5">
                                             <button type="button" className="-m-2.5 p-2.5"
-                                                    onClick={() => setSidebarOpen(false)}>
+                                                onClick={() => setSidebarOpen(false)}>
                                                 <span className="sr-only">Close sidebar</span>
-                                                <XMarkIcon className="h-6 w-6 text-white" aria-hidden="true"/>
+                                                <XMarkIcon className="h-6 w-6 text-white" aria-hidden="true" />
                                             </button>
                                         </div>
                                     </Transition.Child>
@@ -126,7 +138,7 @@ export default function Layout({logo, navigation, headerButtons, userMenuButton,
                                             {logo}
                                         </div>
                                         <nav className="flex flex-1 flex-col">
-                                            {typeof navigation === 'function' ? navigation({closeSidebar}) : navigation}
+                                            {typeof navigation === 'function' ? navigation({ closeSidebar }) : navigation}
                                         </nav>
                                     </div>
                                 </Dialog.Panel>
@@ -143,25 +155,32 @@ export default function Layout({logo, navigation, headerButtons, userMenuButton,
                             {logo}
                         </div>
                         <nav className="flex flex-1 flex-col">
-                            {typeof navigation === 'function' ? navigation({closeSidebar}) : navigation}
+                            {typeof navigation === 'function' ? navigation({ closeSidebar }) : navigation}
                         </nav>
                     </div>
                 </div>
 
                 <div className="lg:pl-72 h-full flex flex-col">
                     <div
-                        className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
+                        className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 dark:border-white/10 bg-white dark:bg-gray-800 px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
                         <button type="button" className="-m-2.5 p-2.5 text-gray-700 lg:hidden"
-                                onClick={() => setSidebarOpen(true)}>
+                            onClick={() => setSidebarOpen(true)}>
                             <span className="sr-only">Open sidebar</span>
-                            <Bars3Icon className="h-6 w-6" aria-hidden="true"/>
+                            <Bars3Icon className="h-6 w-6 dark:text-white" aria-hidden="true" />
                         </button>
 
                         {/* Separator */}
-                        <div className="h-6 w-px bg-gray-900/10 lg:hidden" aria-hidden="true"/>
+                        <div className="h-6 w-px bg-gray-900/10 dark:bg-white/10 lg:hidden" aria-hidden="true" />
 
                         <div className="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
-                            <div className="w-full flex justify-end items-center gap-x-4 lg:gap-x-6">
+                            <div className="flex items-center">
+                                <XToggleInput
+                                    checked={theme === "dark"}
+                                    onChange={toggleTheme}
+                                />
+                                <MoonIcon className="h-4 w-4 text-gray-500 dark:text-gray-400" />
+                            </div>
+                            <div className="w-full flex justify-end items-center gap-x-4 lg:gap-x-4">
                                 {headerButtons && <div className="space-x-4">
                                     {headerButtons}
                                 </div>}
@@ -173,7 +192,7 @@ export default function Layout({logo, navigation, headerButtons, userMenuButton,
                         </div>
                     </div>
 
-                    <main className="bg-gray-50 flex-1">
+                    <main className="bg-gray-50 dark:bg-gray-800 flex-1">
                         {children}
                     </main>
                 </div>

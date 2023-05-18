@@ -1,4 +1,4 @@
-import {XAlertBanner, XListInput, XPageTitle, XTextInput} from "../lib/index.jsx";
+import {XAlertBanner, XListInput, XOutput, XPageTitle, XTextInput} from "../lib/index.jsx";
 import {useState} from "react";
 
 export default function ListInputs() {
@@ -35,7 +35,7 @@ export default function ListInputs() {
                         <XTextInput label="Name" defaultValue={item.name} onChange={(e) => setItem('name', e.target.value)}/>
                         <XTextInput label="Surname" defaultValue={item.surname} onChange={(e) => setItem('surname', e.target.value)}/>
                         <div>
-                            <label htmlFor="phones" className="block text-sm font-medium leading-6">Phones</label>
+                            <label htmlFor="phones" className="block text-sm font-medium leading-6 text-gray-900 dark:text-white">Phones</label>
                             <XListInput label="Phones" value={item.phones} onChange={(e) => setItem('phones', e)} singleValue={true}>
                                 {({ item, setItem }) => (
                                     <XTextInput defaultValue={item} onChange={(e) => setItem(e.target.value)}/>
@@ -47,8 +47,7 @@ export default function ListInputs() {
             </XListInput>
 
             <div className="mt-8">
-                <label htmlFor="output" className="text-sm">Output:</label>
-                <pre className="rounded-md bg-indigo-50 p-4 text-xs">{JSON.stringify(people, undefined, 2)}</pre>
+                <XOutput value={JSON.stringify(people, undefined, 2)} />
             </div>
         </div>
     )

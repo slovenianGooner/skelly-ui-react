@@ -2,6 +2,7 @@ import {
     XCard,
     XCardHeader,
     XCheckboxInput,
+    XOutput,
     XPageTitle, XRadioInput,
     XTextarea,
     XTextInput, XToggleInput
@@ -36,10 +37,7 @@ export default function Inputs() {
                             <XTextInput labelAsPlaceholder={true} label="Simple Text Input" value={textInputValue}
                                         onChange={(e) => setTextInputValue(e.target.value)}/>
                         </div>
-                        <div>
-                            <label htmlFor="output" className="text-sm">Output:</label>
-                            <pre className="rounded-md bg-indigo-50 p-4 text-xs">{textInputValue}</pre>
-                        </div>
+                        {/* <XOutput value={textInputValue} /> */}
                     </div>
                 </XCard>
 
@@ -59,10 +57,7 @@ export default function Inputs() {
                             <XTextarea labelAsPlaceholder={true} label="Simple Textarea" value={textareaValue}
                                        onChange={(e) => setTextareaValue(e.target.value)}/>
                         </div>
-                        <div>
-                            <label htmlFor="output" className="text-sm">Output:</label>
-                            <pre className="rounded-md bg-indigo-50 p-4 text-xs">{textareaValue}</pre>
-                        </div>
+                        {/* <XOutput value={textAreaValue} /> */}
                     </div>
                 </XCard>
 
@@ -73,11 +68,7 @@ export default function Inputs() {
                                         value={checkboxValue}
                                         checked={checkboxValue}
                                         onChange={(e) => setCheckboxValue(e.target.checked)}/>
-                        <div>
-                            <label htmlFor="output" className="text-sm">Output:</label>
-                            <pre
-                                className="rounded-md bg-indigo-50 p-4 text-xs">{checkboxValue ? 'true' : 'false'}</pre>
-                        </div>
+                        <XOutput value={checkboxValue ? 'true' : 'false'} />
                         {['one', 'two', 'three'].map((value) => (
                             <XCheckboxInput key={value}
                                             id={`multiple_checkboxes_${value}`}
@@ -90,13 +81,7 @@ export default function Inputs() {
                                             )}
                                             value={value}/>
                         ))}
-                        <div>
-                            <label htmlFor="output" className="text-sm">Output:</label>
-                            <pre
-                                className="rounded-md bg-indigo-50 p-4 text-xs">
-                                {JSON.stringify(checkboxValues)}
-                            </pre>
-                        </div>
+                        <XOutput value={JSON.stringify(checkboxValues)} />
                     </div>
                 </XCard>
 
@@ -111,13 +96,7 @@ export default function Inputs() {
                                          onChange={(e) => setRadioValue(e.target.value)}
                                          value={value}/>
                         ))}
-                        <div>
-                            <label htmlFor="output" className="text-sm">Output:</label>
-                            <pre
-                                className="rounded-md bg-indigo-50 p-4 text-xs">
-                                {radioValue}
-                            </pre>
-                        </div>
+                        <XOutput value={radioValue} />
                     </div>
                 </XCard>
 
@@ -127,11 +106,7 @@ export default function Inputs() {
                         <XToggleInput id="simple_checkbox" label="Simple Checkbox"
                                       checked={checkboxValue}
                                       onChange={(e) => setCheckboxValue(e)}/>
-                        <div>
-                            <label htmlFor="output" className="text-sm">Output:</label>
-                            <pre
-                                className="rounded-md bg-indigo-50 p-4 text-xs">{checkboxValue ? 'true' : 'false'}</pre>
-                        </div>
+                        <XOutput value={checkboxValue ? 'true' : 'false'} />
                         <div className="flex flex-col space-y-2">
                             {['one', 'two', 'three'].map((value) => (
                                 <XToggleInput key={value}
@@ -142,13 +117,7 @@ export default function Inputs() {
                                               value={value}/>
                             ))}
                         </div>
-                        <div>
-                            <label htmlFor="output" className="text-sm">Output:</label>
-                            <pre
-                                className="rounded-md bg-indigo-50 p-4 text-xs">
-                                {JSON.stringify(checkboxValues)}
-                            </pre>
-                        </div>
+                        <XOutput value={JSON.stringify(checkboxValues)} />
                     </div>
                 </XCard>
             </div>
