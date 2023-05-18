@@ -1,5 +1,5 @@
 import {
-    useFilters,
+    useFilters, XBreadcrumbs,
     XButton,
     XCard,
     XListPagination,
@@ -117,7 +117,11 @@ export default function Lists() {
         <>
             <div className="px-4 sm:px-6 lg:px-8 py-10">
                 <div className="space-y-4">
-                    <XPageTitle>Lists</XPageTitle>
+                    <XBreadcrumbs breadcrumbs={[
+                        {label: "Home", href: "/"},
+                        {label: "Lists", href: "/lists"},
+                    ]} onClick={(url) => navigate(url)} />
+                    <XPageTitle className="mt-4">Lists</XPageTitle>
                     <XCard contentClassName="p-0" header={listHeader} footer={listFooter}>
                         <ul className="divide-y divide-gray-200">
                             {contactsOnPage.map((contact) => (

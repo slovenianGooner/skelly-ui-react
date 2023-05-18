@@ -1,4 +1,5 @@
 import {
+    XBreadcrumbs,
     XCard,
     XCardHeader,
     XCheckboxInput,
@@ -7,8 +8,11 @@ import {
     XTextInput, XToggleInput
 } from "../lib/index.jsx";
 import {useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 export default function Inputs() {
+    const navigate = useNavigate();
+
     const [textInputValue, setTextInputValue] = useState("")
     const [textareaValue, setTextareaValue] = useState("")
     const [checkboxValue, setCheckboxValue] = useState(false)
@@ -18,7 +22,11 @@ export default function Inputs() {
     return (
         <>
             <div className="px-4 sm:px-6 lg:px-8 py-10">
-                <XPageTitle>Inputs</XPageTitle>
+                <XBreadcrumbs breadcrumbs={[
+                    {label: "Home", href: "/"},
+                    {label: "Inputs", href: "/basic-inputs"},
+                ]} onClick={(url) => navigate(url)} />
+                <XPageTitle className="mt-4">Inputs</XPageTitle>
 
                 <XCard className="mt-8"
                        header={<XCardHeader>Text Input</XCardHeader>}>

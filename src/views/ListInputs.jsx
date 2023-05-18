@@ -1,7 +1,10 @@
-import {XAlertBanner, XListInput, XPageTitle, XTextInput} from "../lib/index.jsx";
+import {XAlertBanner, XBreadcrumbs, XListInput, XPageTitle, XTextInput} from "../lib/index.jsx";
 import {useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 export default function ListInputs() {
+    const navigate = useNavigate();
+
     // Input consists of an array of people with a name, surname, and an array of phone numbers
     const [people, setPeople] = useState([
         {
@@ -26,9 +29,13 @@ export default function ListInputs() {
 
     return (
         <div className="px-4 sm:px-6 lg:px-8 py-10">
-            <XPageTitle>List Inputs</XPageTitle>
+            <XBreadcrumbs breadcrumbs={[
+                {label: "Home", href: "/"},
+                {label: "List Inputs", href: "/list-inputs"},
+            ]} onClick={(url) => navigate(url)} />
+            <XPageTitle className="mt-4">List Inputs</XPageTitle>
 
-            <XListInput className="mt-8" collapsed={false} value={people} onChange={(e) => setPeople(e)}
+            <XListInput className="mt-8" collapsed={true} value={people} onChange={(e) => setPeople(e)}
                         emptyValue={{name: '', surname: '', phones: []}}>
                 {({ item, setItem }) => (
                     <div className="space-y-2">

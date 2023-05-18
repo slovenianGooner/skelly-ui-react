@@ -1,8 +1,20 @@
-import {XAlertBanner, XAlertFormError, XButton, XCard, XCardHeader, XPageTitle, XToast} from "../lib/index.jsx";
+import {
+    XAlertBanner,
+    XAlertFormError,
+    XBreadcrumbs,
+    XButton,
+    XCard,
+    XCardHeader,
+    XPageTitle,
+    XToast
+} from "../lib/index.jsx";
 import {CheckCircleIcon, InformationCircleIcon, XMarkIcon} from "@heroicons/react/24/solid/index.js";
 import {useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 export default function Alerts() {
+    const navigate = useNavigate();
+
     const errors = {
         username: ["The username field is required."],
         password: ["Password is not valid."],
@@ -15,7 +27,11 @@ export default function Alerts() {
     return (
         <>
             <div className="px-4 sm:px-6 lg:px-8 py-10">
-                <XPageTitle>Alerts</XPageTitle>
+                <XBreadcrumbs breadcrumbs={[
+                    {label: "Home", href: "/"},
+                    {label: "Alerts", href: "/alerts"},
+                ]} onClick={(url) => navigate(url)} />
+                <XPageTitle className="mt-4">Alerts</XPageTitle>
                 <XCard className="mt-8"
                        header={<XCardHeader>Form Errors</XCardHeader>}>
                     <XAlertFormError errors={errors} title="There were 2 errors with your form submission."/>

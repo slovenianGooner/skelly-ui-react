@@ -1,8 +1,11 @@
-import {XButton, XButtonDropdown, XCard, XCardHeader, XPageTitle} from "../lib";
+import {XBreadcrumbs, XButton, XButtonDropdown, XCard, XCardHeader, XPageTitle} from "../lib";
 import {ChevronDownIcon, PencilIcon} from "@heroicons/react/24/solid/index.js";
 import {Menu} from "@headlessui/react";
+import {useNavigate} from "react-router-dom";
 
 export default function Buttons() {
+    const navigate = useNavigate();
+
     const buttonClicked = () => {
         alert("Button clicked")
     }
@@ -60,7 +63,11 @@ export default function Buttons() {
     return (
         <>
             <div className="px-4 sm:px-6 lg:px-8 py-10">
-                <XPageTitle>Buttons</XPageTitle>
+                <XBreadcrumbs breadcrumbs={[
+                    {label: "Home", href: "/"},
+                    {label: "Buttons", href: "/buttons"},
+                ]} onClick={(url) => navigate(url)} />
+                <XPageTitle className="mt-4">Buttons</XPageTitle>
 
                 <XCard className="mt-8"
                        header={<XCardHeader>Primary</XCardHeader>}>

@@ -1,4 +1,5 @@
 import {
+    XBreadcrumbs,
     XCard,
     XCardHeader,
     XCustomSelectInput,
@@ -7,8 +8,10 @@ import {
     XSelectInput
 } from "../lib/index.jsx";
 import {useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 export default function Selects() {
+    const navigate = useNavigate();
 
     const [place, setPlace] = useState("");
     const [placeTwo, setPlaceTwo] = useState("");
@@ -33,7 +36,11 @@ export default function Selects() {
     return (
         <>
             <div className="px-4 sm:px-6 lg:px-8 py-10">
-                <XPageTitle>Selects</XPageTitle>
+                <XBreadcrumbs breadcrumbs={[
+                    {label: "Home", href: "/"},
+                    {label: "Selects", href: "/selects"},
+                ]} onClick={(url) => navigate(url)} />
+                <XPageTitle className="mt-4">Selects</XPageTitle>
 
                 <XCard className="mt-8" header={<XCardHeader>Simple Select</XCardHeader>}>
                     <div className="space-y-4">

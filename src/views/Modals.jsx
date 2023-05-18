@@ -1,7 +1,10 @@
-import {XButton, XCard, XCardHeader, XModal, XPageTitle} from "../lib/index.jsx";
+import {XBreadcrumbs, XButton, XCard, XCardHeader, XModal, XPageTitle} from "../lib/index.jsx";
 import {useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 export default function Modals() {
+    const navigate = useNavigate();
+
     const [modalWithFooterVisible, setModalWithFooterVisible] = useState(false)
     const [modalWithCloseButtonVisible, setModalWithCloseButtonVisible] = useState(false)
     const [modalDismissableVisible, setModalDismissableVisible] = useState(false)
@@ -21,7 +24,11 @@ export default function Modals() {
     return (
         <>
             <div className="px-4 sm:px-6 lg:px-8 py-10">
-                <XPageTitle>Modals</XPageTitle>
+                <XBreadcrumbs breadcrumbs={[
+                    {label: "Home", href: "/"},
+                    {label: "Modals", href: "/modals"},
+                ]} onClick={(url) => navigate(url)} />
+                <XPageTitle className="mt-4">Modals</XPageTitle>
                 <XCard className="mt-8"
                        header={<XCardHeader>Simple</XCardHeader>}>
                     <div className="space-x-2">
