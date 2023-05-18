@@ -2,8 +2,8 @@
   "name": "skelly-ui-react",
   "private": true,
   "version": "0.0.0",
-  "main": "./src/lib/index.jsx",
-  "module": "./src/lib/index.jsx",
+  "main": "src/lib/index.tsx",
+  "module": "src/lib/index.tsx",
   "type": "module",
   "scripts": {
     "dev": "vite",
