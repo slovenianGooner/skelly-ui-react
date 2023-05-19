@@ -7,10 +7,10 @@ export default function Search({ defaultValue, name = 'search', placeholder = 'S
                         labelAsPlaceholder={true}
                         label={placeholder}
                         name={name}
-                        className="rounded-none rounded-l-md border-0 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"/>
+                        className="rounded-none rounded-l-md !mt-0" />
             <XButton style="secondary"
                      type="submit"
-                     className="!ring-0 inline-flex items-center rounded-l-none rounded-r-md border border-l-0 border-gray-300 px-3 text-gray-500 sm:text-sm">
+                     className="!ring-0 rounded-l-none rounded-r-md border border-l-0 border-gray-300 dark:border-white/5 px-3 sm:text-sm">
                 {buttonLabel}
             </XButton>
         </div>

@@ -1,8 +1,8 @@
 export default function ListPagination({prev_page_url, next_page_url, from, to, total, links, onNavigate}) {
 
     const linkClass = (link, index) => {
-        const className = link.active ? 'relative z-10 inline-flex items-center bg-indigo-600 px-4 py-2 text-sm text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
-            : 'relative inline-flex items-center bg-white px-4 py-2 text-sm text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0';
+        const className = link.active ? 'relative z-10 inline-flex items-center bg-indigo-600 dark:bg-indigo-500 px-4 py-2 text-sm text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:focus-visible:outline-indigo-500'
+            : 'relative inline-flex items-center bg-white dark:bg-white/5 px-4 py-2 text-sm text-gray-900 dark:text-white ring-1 ring-inset ring-gray-300 dark:ring-white/10 hover:bg-gray-50 focus:z-20 focus:outline-offset-0';
 
         if (index === 0) {
             return `${className} rounded-l-md`;
@@ -41,7 +41,7 @@ export default function ListPagination({prev_page_url, next_page_url, from, to, 
             </div>
             <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
                 <div>
-                    <p className="text-sm text-gray-700">
+                    <p className="text-sm text-gray-700 dark:text-gray-300">
                         Showing <span className="font-medium">{from}</span> to <span
                         className="font-medium">{to}</span> of{' '}
                         <span className="font-medium">{total}</span> results

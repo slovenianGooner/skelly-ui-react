@@ -22,17 +22,16 @@ export default forwardRef(function Textarea({
 
     const inputClass = () => {
         if (isError) {
-            return 'border-red-300 focus:border-red-500 dark:focus:border-red-600 focus:ring-red-500 text-red-500';
+            return 'ring-red-500 focus:ring-red-500 text-red-500';
         }
-
-        return 'border-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500';
+        return 'ring-gray-300 dark:ring-white/10 focus:ring-indigo-600 dark:focus:ring-indigo-500';
     }
 
     return (
         <div className="flex flex-col">
             {!labelAsPlaceholder && (
                 <label htmlFor={id} className={
-                    'block text-sm font-medium leading-6 ' + labelClass()
+                    'block text-sm font-medium leading-6 text-gray-900 dark:text-white ' + labelClass()
                 }>
                     {label}
                 </label>
@@ -41,12 +40,12 @@ export default forwardRef(function Textarea({
                    id={id}
                    placeholder={labelAsPlaceholder ? label : ''}
                    className={
-                       'rounded-md shadow-sm ' +
+                       'rounded-md shadow-sm border-0 bg-white dark:bg-white/5 text-gray-900 dark:text-white ring-1 ring-inset focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 ' +
                        inputClass() + ' ' +
                        className
                    }/>
             {isError && (
-                <p className="mt-2 text-sm text-red-600">
+                <p className="mt-2 text-sm text-red-500">
                     {parsedErrors()[0]}
                 </p>
             )}

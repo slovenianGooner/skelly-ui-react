@@ -1,4 +1,4 @@
-import {XAlertBanner, XBreadcrumbs, XListInput, XPageTitle, XTextInput} from "../lib/index.jsx";
+import {XAlertBanner, XBreadcrumbs, XListInput, XOutput, XPageTitle, XTextInput} from "../lib/index.jsx";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
@@ -42,7 +42,7 @@ export default function ListInputs() {
                         <XTextInput label="Name" defaultValue={item.name} onChange={(e) => setItem('name', e.target.value)}/>
                         <XTextInput label="Surname" defaultValue={item.surname} onChange={(e) => setItem('surname', e.target.value)}/>
                         <div>
-                            <label htmlFor="phones" className="text-sm">Phones:</label>
+                            <label htmlFor="phones" className="text-sm text-gray-900 dark:text-white">Phones:</label>
                             <XListInput className="mt-2" value={item.phones} onChange={(e) => setItem('phones', e)} emptyValue={{ value: '' }}>
                                 {({ item, setItem }) => (
                                     <XTextInput defaultValue={item.value} onChange={(e) => setItem('value', e.target.value)}/>
@@ -54,8 +54,7 @@ export default function ListInputs() {
             </XListInput>
 
             <div className="mt-8">
-                <label htmlFor="output" className="text-sm">Output:</label>
-                <pre className="rounded-md bg-indigo-50 p-4 text-xs">{JSON.stringify(people, undefined, 2)}</pre>
+                <XOutput value={JSON.stringify(people, undefined, 2)} />
             </div>
         </div>
     )

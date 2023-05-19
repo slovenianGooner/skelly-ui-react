@@ -1,4 +1,4 @@
-import {XBreadcrumbs, XCard, XCardHeader, XFileInput, XPageTitle} from "../lib/index.jsx";
+import {XBreadcrumbs, XCard, XCardHeader, XFileInput, XOutput, XPageTitle} from "../lib/index.jsx";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
@@ -19,23 +19,11 @@ export default function File() {
                        header={<XCardHeader>Simple</XCardHeader>}>
                     <div className="space-y-4">
                         <XFileInput label="File" onChange={(e) => setFile(e)}/>
-                        <div>
-                            <label htmlFor="output" className="text-sm">Output:</label>
-                            <pre
-                                className="rounded-md bg-indigo-50 p-4 text-xs">
-                                {file?.name}
-                            </pre>
-                        </div>
+                        <XOutput value={file?.name} />
+
                         <XFileInput label="File With Error" onChange={(e) => setFile(e)}
                                     errors={['The file is required.']}/>
-                        <div>
-                            <label htmlFor="output" className="text-sm">Output:</label>
-                            <pre
-                                className="rounded-md bg-indigo-50 p-4 text-xs">
-                                {file?.name}
-                            </pre>
-                        </div>
-
+                        <XOutput value={file?.name} />
                     </div>
                 </XCard>
             </div>

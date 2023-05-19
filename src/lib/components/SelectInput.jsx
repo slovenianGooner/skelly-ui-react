@@ -45,15 +45,14 @@ export default function SelectInput({
             return 'text-red-500';
         }
 
-        return 'text-gray-900';
+        return 'text-gray-900 dark:text-white';
     }
 
     const inputClass = () => {
         if (isError) {
-            return 'ring-red-300 focus:ring-red-600 text-red-600';
+            return 'ring-red-500 focus:ring-red-500 text-red-500';
         }
-
-        return 'ring-gray-300 focus:ring-indigo-600 text-gray-900';
+        return 'ring-gray-300 dark:ring-white/10 focus:ring-indigo-600 dark:focus:ring-indigo-500 text-gray-900 dark:text-white';
     }
 
     return (
@@ -67,7 +66,7 @@ export default function SelectInput({
                 {...props}
                 value={value}
                 onChange={(e) => onChange(e.target.value)}
-                className={'mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 ring-1 ring-inset focus:ring-2 sm:text-sm sm:leading-6 ' + inputClass()}
+                className={'mt-1 block bg-white dark:bg-white/5 w-full rounded-md shadow-sm border-0 py-1.5 pl-3 pr-10 ring-1 ring-inset focus:ring-inset focus:ring-2 sm:text-sm sm:leading-6 ' + inputClass()}
             >
                 {labelAsPlaceholder && (
                     <option value="" disabled>{label}</option>
@@ -81,7 +80,7 @@ export default function SelectInput({
             </select>
 
             {isError && (
-                <p className="mt-2 text-sm text-red-600">
+                <p className="mt-2 text-sm text-red-500">
                     {parsedErrors()[0]}
                 </p>
             )}
