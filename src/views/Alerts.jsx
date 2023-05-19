@@ -39,36 +39,38 @@ export default function Alerts() {
                 <XCard className="mt-8"
                        header={<XCardHeader>Banners</XCardHeader>}>
                     <div className="space-y-4">
-                        <XAlertBanner className="bg-blue-50"
-                                      action={
-                                          <a href="#"
-                                             className="text-sm whitespace-nowrap font-medium text-blue-700 hover:text-blue-600">
-                                              Details
-                                              <span aria-hidden="true"> &rarr;</span>
-                                          </a>
-                                      }
-                                      icon={<InformationCircleIcon className="h-5 w-5 text-blue-400"
-                                                                   aria-hidden="true"/>}>
-                            <p className="text-sm text-blue-700">A new software update is available. See what’s new in
+                        <XAlertBanner className="bg-blue-50 dark:bg-gray-800"
+                            action={
+                                <div className="-mx-1.5 -my-1.5">
+                                    <a href="#"
+                                        className="text-sm rounded-md p-1.5 whitespace-nowrap font-medium text-blue-500 hover:text-blue-400 focus:ring-2 focus:ring-blue-700 dark:focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-blue-50 dark:focus:ring-offset-gray-800 focus:outline-none">
+                                        Details
+                                        <span aria-hidden="true"> &rarr;</span>
+                                    </a>
+                                </div>
+                            }
+                            icon={<InformationCircleIcon className="h-5 w-5 text-blue-400 dark:text-blue-500"
+                                aria-hidden="true" />}>
+                            <p className="text-sm text-blue-500">A new software update is available. See what’s new in
                                 version 2.0.4.</p>
                         </XAlertBanner>
                         {dismissibleBannerVisible && (
-                            <XAlertBanner className="bg-green-50"
-                                          dismiss={
-                                              <div className="-mx-1.5 -my-1.5">
-                                                  <button
-                                                      onClick={() => setDismissibleBannerVisible(false)}
-                                                      type="button"
-                                                      className="inline-flex rounded-md bg-green-50 p-1.5 text-green-500 hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2 focus:ring-offset-green-50"
-                                                  >
-                                                      <span className="sr-only">Dismiss</span>
-                                                      <XMarkIcon className="h-5 w-5" aria-hidden="true"/>
-                                                  </button>
-                                              </div>
-                                          }
-                                          icon={<CheckCircleIcon className="h-5 w-5 text-green-400"
-                                                                 aria-hidden="true"/>}>
-                                <p className="text-sm font-medium text-green-800">Successfully uploaded</p>
+                            <XAlertBanner className="bg-green-50 dark:bg-gray-800"
+                                dismiss={
+                                    <div className="-mx-1.5 -my-1.5">
+                                        <button
+                                            onClick={() => setDismissibleBannerVisible(false)}
+                                            type="button"
+                                            className="inline-flex rounded-md p-1.5 text-green-600 hover:text-green-500 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2 focus:ring-offset-green-50 dark:focus:ring-offset-gray-800"
+                                        >
+                                            <span className="sr-only">Dismiss</span>
+                                            <XMarkIcon className="h-5 w-5" aria-hidden="true"/>
+                                        </button>
+                                    </div>
+                                }
+                                icon={<CheckCircleIcon className="h-5 w-5 text-green-600"
+                                    aria-hidden="true"/>}>
+                                <p className="text-sm text-green-600">Successfully uploaded</p>
                             </XAlertBanner>
                         )}
                     </div>

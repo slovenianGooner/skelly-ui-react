@@ -96,10 +96,10 @@ export default function CustomSelectInput({
 
     const inputClass = (open) => {
         if (isError) {
-            return 'ring-red-500 focus:ring-red-500 text-red-500';
+            return `ring-red-500 focus:ring-red-500 ${open && 'ring-2 ring-red-500'} text-red-500`;
         }
         // Open property passed, because otherwise when we open the options, the button loses focus and hence the ring is gone
-        return `ring-gray-300 dark:ring-white/10 focus:ring-indigo-600 dark:focus:ring-indigo-500 text-gray-900 dark:text-white ${open && 'ring-2 ring-indigo-600 dark:ring-indigo-500'}`;
+        return `ring-gray-300 dark:ring-white/10 focus:ring-indigo-600 dark:focus:ring-indigo-500 text-gray-900 dark:text-white ${open && 'ring-2 !ring-indigo-600 dark:!ring-indigo-500'}`;
     }
 
     return (
