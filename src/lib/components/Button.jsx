@@ -1,4 +1,4 @@
-export default function Button({as = "button", children, style, size, divided = false, className = "", ...props}) {
+export default function Button({as = "button", children, style = "primary", size, divided = false, className = "", ...props}) {
 
     const Tag = as === "a" ? "a" : "button";
 
@@ -8,8 +8,8 @@ export default function Button({as = "button", children, style, size, divided = 
     }
 
     const styles = {
-        primary: "rounded bg-indigo-600 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600",
-        secondary: "rounded bg-white font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50",
+        primary: "rounded bg-indigo-600 dark:bg-indigo-500 font-semibold text-white shadow-sm hover:bg-indigo-500 dark:hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600",
+        secondary: "rounded bg-white dark:bg-white/10 font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-white/5 dark:text-white shadow-sm hover:bg-gray-50 dark:hover:bg-white/20",
         soft: "rounded bg-indigo-50 font-semibold text-indigo-600 shadow-sm hover:bg-indigo-100",
         danger: "rounded bg-red-600 font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600",
         warning: "rounded bg-yellow-600 font-semibold text-white shadow-sm hover:bg-yellow-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-600",
@@ -45,7 +45,7 @@ export default function Button({as = "button", children, style, size, divided = 
     return (
         <Tag
             {...props}
-            className={`${tagStyles[as]} ${styles[style] || styles.primary} ${sizes[size] || sizes.md} ${className}`}
+            className={`${tagStyles[as]} ${styles[style]} ${sizes[size] || sizes.md} ${className}`}
         >
             {children}
         </Tag>

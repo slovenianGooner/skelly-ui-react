@@ -95,15 +95,15 @@ export default function SearchableSelectInput({
             return 'text-red-500';
         }
 
-        return 'text-gray-900';
+        return 'text-gray-900 dark:text-white';
     }
 
     const inputClass = () => {
         if (isError) {
-            return 'ring-red-300 focus:ring-red-600 text-red-600';
+            return 'ring-red-500 focus:ring-red-500 text-red-500';
         }
 
-        return 'ring-gray-300 focus:ring-indigo-600 text-gray-900';
+        return 'ring-gray-300 dark:ring-white/10 focus-within:ring-indigo-600 dark:focus-within:ring-indigo-500 text-gray-900 dark:text-white';
     }
 
     return (
@@ -111,11 +111,11 @@ export default function SearchableSelectInput({
             <Combobox value={selected} onChange={setSelected} multiple={multiple}>
                 <div className="relative">
                     <div
-                        className={'relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset focus:outline-none focus:ring-2 sm:text-sm sm:leading-6 ' + inputClass()}>
+                        className={'relative w-full cursor-default rounded-md bg-white dark:bg-white/5 py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset focus:outline-none focus-within:ring-2 sm:text-sm sm:leading-6 ' + inputClass()}>
                         <Combobox.Button className="w-full relative flex justify-between items-center">
                             <Combobox.Input onChange={(e) => setQuery(e.target.value)}
                                             onFocus={(e) => selected.length === 0 ? e.target.value = '' : null}
-                                            className="w-full border-none px-0 py-0.5 text-sm leading-5 text-gray-900 focus:ring-0"
+                                            className="w-full border-none px-0 py-0.5 text-sm leading-5 bg-transparent text-gray-900 dark:text-white focus:ring-0"
                                             displayValue={() => resolveSelectedLabel()}/>
                         </Combobox.Button>
                         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
@@ -128,7 +128,7 @@ export default function SearchableSelectInput({
                                 leaveTo="opacity-0"
                                 afterLeave={() => setQuery('')}>
                         <Combobox.Options
-                            className="z-10 absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                            className="z-10 absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white dark:bg-[#212734] py-1 text-base shadow-lg border border-gray-300 dark:border-white/10 focus:outline-none sm:text-sm">
                             {filteredOptions.length === 0 && query !== '' ? (
                                 <div className="relative cursor-default select-none py-2 px-4 text-gray-700">
                                     Nothing found.
@@ -139,7 +139,7 @@ export default function SearchableSelectInput({
                                         key={index}
                                         className={({active}) =>
                                             classNames(
-                                                active ? 'bg-indigo-600 text-white' : 'text-gray-900',
+                                                active ? 'bg-indigo-600 dark:bg-indigo-500 text-white' : 'text-gray-900 dark:text-white',
                                                 'relative cursor-default select-none py-2 pl-3 pr-9'
                                             )
                                         }
@@ -155,7 +155,7 @@ export default function SearchableSelectInput({
                                                 {selected ? (
                                                     <span
                                                         className={classNames(
-                                                            active ? 'text-white' : 'text-indigo-600',
+                                                            active ? 'text-white' : 'text-indigo-600 dark:text-indigo-500',
                                                             'absolute inset-y-0 right-0 flex items-center pr-4'
                                                         )}
                                                     >
@@ -172,7 +172,7 @@ export default function SearchableSelectInput({
                 </div>
             </Combobox>
             {isError && (
-                <p className="mt-2 text-sm text-red-600">
+                <p className="mt-2 text-sm text-red-500">
                     {parsedErrors()[0]}
                 </p>
             )}

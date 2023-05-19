@@ -7,15 +7,15 @@ export default function FileInput({label, errors = [], onChange, ...props}) {
             return 'text-red-500';
         }
 
-        return 'text-gray-900';
+        return 'text-gray-900 dark:text-white';
     }
 
     const inputClass = () => {
         if (isError) {
-            return 'file:bg-red-50 file:text-red-600 hover:file:bg-red-100 hover:file:text-red-600 text-red-600';
+            return 'file:bg-red-50 file:text-red-500 hover:file:bg-red-100 text-red-500 border-red-700/10 dark:border-red-400/30 ';
         }
 
-        return 'file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 hover:file:text-indigo-700';
+        return 'file:bg-indigo-50 dark:file:bg-indigo-400/10 file:text-indigo-700 dark:file:text-indigo-400 dark:hover:file:bg-indigo-400/20 hover:file:bg-indigo-100 text-gray-900 dark:text-white border-indigo-700/10 dark:border-indigo-400/30 ';
     }
 
     return (
@@ -27,10 +27,10 @@ export default function FileInput({label, errors = [], onChange, ...props}) {
                     {label}
                 </label>
                 <input type="file"
-                       className={'file:mr-2 file:py-2 file:px-6 file:border-0 file:text-sm file:font-medium hover:file:cursor-pointer text-sm border w-full rounded-md ' + inputClass()}
+                       className={'file:mr-2 file:py-2 file:px-6 file:border-0 focus:outline-none file:text-sm file:font-medium hover:file:cursor-pointer text-sm border w-full rounded-md ' + inputClass()}
                        onChange={(e) => onChange(e.target.files[0])}/>
                 {isError && (
-                    <p className="mt-2 text-sm text-red-600">
+                    <p className="mt-2 text-sm text-red-500">
                         {parsedErrors()[0]}
                     </p>
                 )}

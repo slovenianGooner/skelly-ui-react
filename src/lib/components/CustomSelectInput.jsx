@@ -91,15 +91,15 @@ export default function CustomSelectInput({
             return 'text-red-500';
         }
 
-        return 'text-gray-900';
+        return 'text-gray-900 dark:text-white';
     }
 
-    const inputClass = () => {
+    const inputClass = (open) => {
         if (isError) {
-            return 'ring-red-300 focus:ring-red-600 text-red-600';
+            return 'ring-red-500 focus:ring-red-500 text-red-500';
         }
-
-        return 'ring-gray-300 focus:ring-indigo-600 text-gray-900';
+        // Open property passed, because otherwise when we open the options, the button loses focus and hence the ring is gone
+        return `ring-gray-300 dark:ring-white/10 focus:ring-indigo-600 dark:focus:ring-indigo-500 text-gray-900 dark:text-white ${open && 'ring-2 ring-indigo-600 dark:ring-indigo-500'}`;
     }
 
     return (
@@ -114,7 +114,7 @@ export default function CustomSelectInput({
                         )}
                         <div className="relative mt-1">
                             <Listbox.Button
-                                className={'relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset focus:outline-none focus:ring-2 sm:text-sm sm:leading-6 ' + inputClass()}>
+                                className={'relative w-full cursor-default rounded-md bg-white dark:bg-white/5 py-1.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset focus:outline-none focus:ring-2 sm:text-sm sm:leading-6 ' + inputClass(open)}>
                             <span className="block truncate"
                                   dangerouslySetInnerHTML={{__html: resolveSelectedLabel()}}></span>
                                 <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
@@ -130,13 +130,13 @@ export default function CustomSelectInput({
                                 leaveTo="opacity-0"
                             >
                                 <Listbox.Options
-                                    className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                                    className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white dark:bg-[#212734] py-1 text-base shadow-lg border border-gray-300 dark:border-white/10 focus:outline-none sm:text-sm">
                                     {options.map((option, index) => (
                                         <Listbox.Option
                                             key={index}
                                             className={({active}) =>
                                                 classNames(
-                                                    active ? 'bg-indigo-600 text-white' : 'text-gray-900',
+                                                    active ? 'bg-indigo-600 dark:bg-indigo-500 text-white' : 'text-gray-900 dark:text-white',
                                                     'relative cursor-default select-none py-2 pl-3 pr-9'
                                                 )
                                             }
@@ -152,7 +152,7 @@ export default function CustomSelectInput({
                                                     {selected ? (
                                                         <span
                                                             className={classNames(
-                                                                active ? 'text-white' : 'text-indigo-600',
+                                                                active ? 'text-white' : 'text-indigo-600 dark:text-indigo-500',
                                                                 'absolute inset-y-0 right-0 flex items-center pr-4'
                                                             )}
                                                         >
@@ -170,7 +170,7 @@ export default function CustomSelectInput({
                 )}
             </Listbox>
             {isError && (
-                <p className="mt-2 text-sm text-red-600">
+                <p className="mt-2 text-sm text-red-500">
                     {parsedErrors()[0]}
                 </p>
             )}

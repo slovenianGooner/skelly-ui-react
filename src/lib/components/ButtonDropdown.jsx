@@ -26,7 +26,7 @@ export default function ButtonDropdown({button, start = 'bottomLeft', children})
                     leaveTo="transform opacity-0 scale-95"
                 >
                     <Menu.Items
-                        className={`${startPositions[start]} absolute z-10 w-56 rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none`}>
+                        className={`${startPositions[start]} absolute z-10 w-56 rounded-md bg-white dark:bg-gray-800 py-2 shadow-lg ring-1 ring-gray-200 dark:ring-white/10 focus:outline-none`}>
                         {children}
                     </Menu.Items>
                 </Transition>
