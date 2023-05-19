@@ -1,6 +1,13 @@
-export default function AlertBanner({children, icon, action, dismiss, className}) {
+export default function AlertBanner({children, style = 'info', icon, action, dismiss, className}) {
+
+    const styles = {
+        info: 'bg-blue-50 dark:bg-gray-800',
+        success: 'bg-green-50 dark:bg-gray-800',
+        warning: 'bg-yellow-50 dark:bg-gray-800',
+    }
+
     return (
-        <div className={'rounded-md p-4 ' + className}>
+        <div className={'rounded-md p-4 ' + styles[style] + ' ' + className}>
             <div className="flex">
                 {icon && (
                     <div className="flex-shrink-0 mr-3">

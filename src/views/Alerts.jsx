@@ -39,7 +39,7 @@ export default function Alerts() {
                 <XCard className="mt-8"
                        header={<XCardHeader>Banners</XCardHeader>}>
                     <div className="space-y-4">
-                        <XAlertBanner className="bg-blue-50 dark:bg-gray-800"
+                        <XAlertBanner style="info"
                             action={
                                 <div className="-mx-1.5 -my-1.5">
                                     <a href="#"
@@ -54,8 +54,23 @@ export default function Alerts() {
                             <p className="text-sm text-blue-500">A new software update is available. See what’s new in
                                 version 2.0.4.</p>
                         </XAlertBanner>
+                        <XAlertBanner style="warning"
+                                      action={
+                                          <div className="-mx-1.5 -my-1.5">
+                                              <a href="#"
+                                                 className="text-sm rounded-md p-1.5 whitespace-nowrap font-medium text-yellow-500 hover:text-yellow-400 focus:ring-2 focus:ring-yellow-700 dark:focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-yellow-50 dark:focus:ring-offset-gray-800 focus:outline-none">
+                                                  Details
+                                                  <span aria-hidden="true"> &rarr;</span>
+                                              </a>
+                                          </div>
+                                      }
+                                      icon={<InformationCircleIcon className="h-5 w-5 text-yellow-400 dark:text-yellow-500"
+                                                                   aria-hidden="true" />}>
+                            <p className="text-sm text-yellow-700 dark:text-yellow-500">A new software update is available. See what’s new in
+                                version 2.0.4.</p>
+                        </XAlertBanner>
                         {dismissibleBannerVisible && (
-                            <XAlertBanner className="bg-green-50 dark:bg-gray-800"
+                            <XAlertBanner style="success"
                                 dismiss={
                                     <div className="-mx-1.5 -my-1.5">
                                         <button
