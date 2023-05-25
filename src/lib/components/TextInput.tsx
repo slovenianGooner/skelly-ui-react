@@ -1,29 +1,22 @@
-import {forwardRef} from "react";
+import { InputHTMLAttributes, forwardRef } from "react";
 
-type TextInputProps = {
-    type?: string,
-    id?: string,
+interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
     label?: string,
     labelAsPlaceholder?: boolean,
-    className?: string,
     errors?: string | string[],
-    defaultValue?: string,
-    name?: string,
     [x: string]: any;
 }
 
 export default forwardRef(function TextInput({
-                                                 type = 'text',
-                                                 id = '',
-                                                 label = '',
-                                                 labelAsPlaceholder = false,
-                                                 className = '',
-                                                 errors = [],
-                                                 ...props
-                                             }: TextInputProps, ref) {
+    label,
+    labelAsPlaceholder,
+    className,
+    errors,
+    type = 'text',
+    ...props
+}: TextInputProps, ref) {
 
-    const parsedErrors = () => errors instanceof Array ? errors : [errors]
-    const isError = parsedErrors().length > 0
+    const isError = errors?.length > 0
 
     const labelClass = () => {
         if (isError) {
@@ -43,24 +36,25 @@ export default forwardRef(function TextInput({
     return (
         <div className="flex flex-col">
             {!labelAsPlaceholder && (
-                <label htmlFor={id} className={
+                <label htmlFor={props.id} className={
                     'block text-sm font-medium leading-6 text-gray-900 dark:text-white ' + labelClass()
                 }>
                     {label}
                 </label>
             )}
-            <input {...props}
-                   type={type}
-                   id={id}
-                   placeholder={labelAsPlaceholder ? label : ''}
-                   className={
-                       'mt-1 bg-white dark:bg-white/5 border-0 rounded-md shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 ' +
-                       inputClass() + ' ' +
-                       className
-                   }/>
+            <input
+                {...props}
+                type={type}
+                placeholder={labelAsPlaceholder ? label : ''}
+                className={
+                    'mt-1 bg-white dark:bg-white/5 border-0 rounded-md shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 ' +
+                    inputClass() + ' ' +
+                    className
+                }
+            />
             {isError && (
                 <p className="mt-2 text-sm text-red-500">
-                    {parsedErrors()[0]}
+                    {errors[0]}
                 </p>
             )}
         </div>

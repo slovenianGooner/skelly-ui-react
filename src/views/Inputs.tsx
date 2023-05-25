@@ -8,7 +8,7 @@ import {
     XTextarea,
     XTextInput, XToggleInput
 } from "../lib";
-import {useState} from "react";
+import {ChangeEvent, useState} from "react";
 import {useNavigate} from "react-router-dom";
 
 export default function Inputs() {
@@ -34,16 +34,16 @@ export default function Inputs() {
                     <div className="space-y-4">
                         <div>
                             <XTextInput label="Simple Text Input" value={textInputValue}
-                                        onChange={(e) => setTextInputValue(e.target.value)}/>
+                                        onChange={(e: ChangeEvent<HTMLInputElement>) => setTextInputValue(e.target.value)}/>
                         </div>
                         <div>
                             <XTextInput label="Simple Text Input" value={textInputValue}
-                                        onChange={(e) => setTextInputValue(e.target.value)}
+                                        onChange={(e: ChangeEvent<HTMLInputElement>) => setTextInputValue(e.target.value)}
                                         errors={["This field is required."]}/>
                         </div>
                         <div>
                             <XTextInput labelAsPlaceholder={true} label="Simple Text Input" value={textInputValue}
-                                        onChange={(e) => setTextInputValue(e.target.value)}/>
+                                        onChange={(e: ChangeEvent<HTMLInputElement>) => setTextInputValue(e.target.value)}/>
                         </div>
                         {/* <XOutput value={textInputValue} /> */}
                     </div>
@@ -73,7 +73,6 @@ export default function Inputs() {
                        header={<XCardHeader>Checkboxes</XCardHeader>}>
                     <div className="space-y-4">
                         <XCheckboxInput id="simple_checkbox" label="Simple Checkbox"
-                                        value={checkboxValue}
                                         checked={checkboxValue}
                                         onChange={(e) => setCheckboxValue(e.target.checked)}/>
                         <XOutput value={checkboxValue ? 'true' : 'false'} />
@@ -111,18 +110,17 @@ export default function Inputs() {
                 <XCard className="mt-8"
                        header={<XCardHeader>Toggles</XCardHeader>}>
                     <div className="space-y-4">
-                        <XToggleInput id="simple_checkbox" label="Simple Checkbox"
+                        <XToggleInput label="Simple Checkbox"
                                       checked={checkboxValue}
                                       onChange={(e) => setCheckboxValue(e)}/>
                         <XOutput value={checkboxValue ? 'true' : 'false'} />
                         <div className="flex flex-col space-y-2">
                             {['one', 'two', 'three'].map((value) => (
                                 <XToggleInput key={value}
-                                              id={`multiple_checkboxes_${value}`}
                                               label={value}
                                               checked={checkboxValues.includes(value)}
                                               onChange={(e) => setCheckboxValues(e ? [...checkboxValues, value] : checkboxValues.filter((v) => v !== value))}
-                                              value={value}/>
+                                              />
                             ))}
                         </div>
                         <XOutput value={JSON.stringify(checkboxValues)} />

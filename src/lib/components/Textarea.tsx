@@ -1,21 +1,18 @@
-import {forwardRef} from "react";
+import { InputHTMLAttributes, forwardRef } from "react";
 
-type TextareaProps = {
-    id?: string,
+interface TextareaProps extends InputHTMLAttributes<HTMLTextAreaElement> {
     label?: string,
     labelAsPlaceholder?: boolean,
-    className?: string,
     errors?: string | string[]
 }
 
 export default forwardRef(function Textarea({
-                                                 id = '',
-                                                 label = '',
-                                                 labelAsPlaceholder = false,
-                                                 className = '',
-                                                 errors = [],
-                                                 ...props
-                                             }: TextareaProps, ref) {
+    label = '',
+    labelAsPlaceholder = false,
+    className = '',
+    errors = [],
+    ...props
+}: TextareaProps, ref) {
 
     const parsedErrors = () => errors instanceof Array ? errors : [errors]
     const isError = parsedErrors().length > 0
@@ -38,20 +35,19 @@ export default forwardRef(function Textarea({
     return (
         <div className="flex flex-col">
             {!labelAsPlaceholder && (
-                <label htmlFor={id} className={
+                <label htmlFor={props.id} className={
                     'block text-sm font-medium leading-6 text-gray-900 dark:text-white ' + labelClass()
                 }>
                     {label}
                 </label>
             )}
             <textarea {...props}
-                   id={id}
-                   placeholder={labelAsPlaceholder ? label : ''}
-                   className={
-                       'rounded-md shadow-sm border-0 bg-white dark:bg-white/5 text-gray-900 dark:text-white ring-1 ring-inset focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 ' +
-                       inputClass() + ' ' +
-                       className
-                   }/>
+                placeholder={labelAsPlaceholder ? label : ''}
+                className={
+                    'rounded-md shadow-sm border-0 bg-white dark:bg-white/5 text-gray-900 dark:text-white ring-1 ring-inset focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 ' +
+                    inputClass() + ' ' +
+                    className
+                } />
             {isError && (
                 <p className="mt-2 text-sm text-red-500">
                     {parsedErrors()[0]}
