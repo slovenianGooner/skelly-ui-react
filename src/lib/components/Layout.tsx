@@ -1,7 +1,8 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useState } from "react";
 import { Dialog, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, ChevronDownIcon, XMarkIcon, MoonIcon } from "@heroicons/react/24/solid/index.js";
 import { XButtonDropdown, XToggleInput } from "../index.js";
+import { useTheme } from "../../context/theme.js";
 
 type LayoutProps = {
     logo?: any,
@@ -17,17 +18,7 @@ type LayoutProps = {
 export default function Layout({ logo, navigation, headerButtons, userMenuButton, userMenuItems, username, children, loadingScreen }: LayoutProps) {
 
     const [sidebarOpen, setSidebarOpen] = useState(false)
-    const [theme, setTheme] = useState(localStorage.getItem("theme"))
-
-    const toggleTheme = () => {
-        setTheme(theme === "dark" ? "light" : "dark")
-    }
-
-    useEffect(() => {
-        localStorage.setItem("theme", theme)
-        document.body.classList.remove("dark", "light")
-        document.body.classList.add("h-full", theme);
-    }, [theme])
+    const { theme, toggleTheme } = useTheme()
 
     if (!logo) {
         logo = <a href="/" className="text-2xl font-light text-white">Skelly<span className="font-bold">UI</span></a>

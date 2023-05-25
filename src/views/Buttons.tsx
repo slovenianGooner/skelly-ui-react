@@ -2,6 +2,34 @@ import {XBreadcrumbs, XButton, XButtonDropdown, XCard, XCardHeader, XPageTitle} 
 import {ChevronDownIcon, PencilIcon} from "@heroicons/react/24/solid/index.js";
 import {Menu} from "@headlessui/react";
 import {useNavigate} from "react-router-dom";
+import PreviewCard from "../components/PreviewCard";
+
+const primaryCodeString =
+    `<div className="flex items-center space-x-6">
+        <XButton as="a" href="/" style="primary" size="xs">Link</XButton>
+        <XButton as="button" onClick={buttonClicked} style="primary" size="sm">Button With
+            Click</XButton>
+        <XButton as="a" href="/" style="primary" size="md">Link</XButton>
+        <XButton as="button" onClick={buttonClicked} style="primary" size="lg" className="gap-2">
+            <PencilIcon className="w-4 h-4"/>
+            Button With Click
+        </XButton>
+        <XButton as="a" href="/" style="primary" size="xl">Link</XButton>
+    </div>`;
+
+const secondaryCodeString =
+    `<div className="flex items-center space-x-6">
+        <XButton as="a" href="/" style="secondary" size="xs">Link</XButton>
+        <XButton as="button" onClick={buttonClicked} style="secondary" size="sm">Button With
+            Click</XButton>
+        <XButton as="a" href="/" style="secondary" size="md">Link</XButton>
+        <XButton as="button" onClick={buttonClicked} style="secondary" size="lg" className="gap-2">
+            <PencilIcon className="w-4 h-4"/>
+            Button With Click
+        </XButton>
+        <XButton as="a" href="/" style="secondary" size="xl">Link</XButton>
+    </div>`;
+
 
 export default function Buttons() {
     const navigate = useNavigate();
@@ -69,7 +97,7 @@ export default function Buttons() {
                 ]} onClick={(url) => navigate(url)} />
                 <XPageTitle className="mt-4">Buttons</XPageTitle>
 
-                <XCard className="mt-8"
+                <PreviewCard codeString={primaryCodeString} className="mt-8"
                        header={<XCardHeader>Primary</XCardHeader>}>
                     <div className="flex items-center space-x-6">
                         <XButton as="a" href="/" style="primary" size="xs">Link</XButton>
@@ -82,8 +110,8 @@ export default function Buttons() {
                         </XButton>
                         <XButton as="a" href="/" style="primary" size="xl">Link</XButton>
                     </div>
-                </XCard>
-                <XCard className="mt-8"
+                </PreviewCard>
+                <PreviewCard codeString={secondaryCodeString} className="mt-8"
                        header={<XCardHeader>Secondary</XCardHeader>}>
                     <div className="flex items-center space-x-6">
                         <XButton as="a" href="/" style="secondary" size="xs">Link</XButton>
@@ -96,7 +124,7 @@ export default function Buttons() {
                         </XButton>
                         <XButton as="a" href="/" style="secondary" size="xl">Link</XButton>
                     </div>
-                </XCard>
+                </PreviewCard>
                 <XCard className="mt-8"
                        header={<XCardHeader>Soft</XCardHeader>}>
                     <div className="flex items-center space-x-6">

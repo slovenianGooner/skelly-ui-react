@@ -1,6 +1,7 @@
 import {XLayout} from "./lib/index";
 import {Menu} from "@headlessui/react";
 import {NavLink, Outlet} from "react-router-dom";
+import { ThemeProvider } from "./context/theme";
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -54,11 +55,11 @@ function App() {
         </>
     )
     return (
-        <>
+        <ThemeProvider>
             <XLayout navigation={navigation} userMenuItems={userMenuItems}>
                 <Outlet/>
             </XLayout>
-        </>
+        </ThemeProvider>
     )
 }
 
